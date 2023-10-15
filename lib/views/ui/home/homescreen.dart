@@ -6,7 +6,7 @@ import 'package:homely_dish/constants/reusable_text.dart';
 import 'package:homely_dish/views/common/app_bar.dart';
 import 'package:homely_dish/views/common/custom_heading.dart';
 import 'package:homely_dish/views/common/drawer/drawer_widget.dart';
-import 'package:homely_dish/views/ui/cart/cartscreen.dart';
+import 'package:homely_dish/views/ui/cart/cart_screen.dart';
 import 'package:homely_dish/views/ui/categories/categoryscreen.dart';
 import 'package:homely_dish/views/ui/home/widgets/card_widget.dart';
 import 'package:homely_dish/views/ui/home/widgets/categories_widget.dart';
