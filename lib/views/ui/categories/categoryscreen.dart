@@ -31,7 +31,7 @@ class _CategoryPageState extends State<CategoryPage> {
           text: 'Categories',
           child: Padding(
             padding: EdgeInsets.all(12.h),
-            child: DrawerWidget(),
+            child: const DrawerWidget(),
           ),
         ),
       ),

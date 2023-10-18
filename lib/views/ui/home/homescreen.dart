@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           text: 'Nairobi, Kenya',
           child: Padding(
             padding: EdgeInsets.all(12.h),
-            child: DrawerWidget(),
+            child: const DrawerWidget(),
           ),
         ),
       ),

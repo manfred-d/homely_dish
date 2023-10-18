@@ -31,7 +31,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
           text: 'Bookmarked',
           child: Padding(
             padding: EdgeInsets.all(12.h),
-            child: DrawerWidget(),
+            child: const DrawerWidget(),
           ),
         ),
       ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:homely_dish/constants/app_constants.dart';
 import 'package:homely_dish/constants/custom_btn.dart';
+import 'package:homely_dish/constants/sign_in_btn.dart';
 import 'package:homely_dish/controllers/login_provider.dart';
 // import 'package:homely_dish/views/common/app_bar.dart';
 import 'package:homely_dish/views/common/custom_textfield.dart';
@@ -114,6 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                           return null;
                         }
                       },
+                      prefixIcon: const Icon(Icons.email_outlined),
                     ),
                     const SizedBox(
                       height: 20,
@@ -142,6 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       obscureText: loginNotifier.obscureText,
+                      prefixIcon: const Icon(Icons.password_outlined),
                     ),
                     const SizedBox(
                       height: 20,
@@ -166,16 +170,67 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           'Register',
                           style: TextStyle(
-                            fontSize: 14,
-                            color: Color(kDark.value),
+                            fontSize: 18,
+                            color: Color(kDarkGrey.value),
                             fontWeight: FontWeight.w500,
                             letterSpacing: 1.5,
                           ),
                         ),
                       ),
                     ),
-
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Divider(
+                      height: 10,
+                      color: Color(kLightGrey.value),
+                      thickness: 1.12,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    
                     // Signing with Email / LinkedIn / Facebook
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SocialBtn(
+                          bgcolor: Colors.lightBlue,
+                          tcolor: Color(kLight.value),
+                          icon: Icons.facebook,
+                        ),
+                        SocialBtn(
+                          bgcolor: Color(kOrange2.value),
+                          tcolor: Color(kDarkGreen.value),
+                          icon: Ionicons.logo_google,
+                        ),
+                        SocialBtn(
+                          bgcolor: Colors.blue,
+                          tcolor: Color(kLight.value),
+                          icon: Ionicons.logo_twitter,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          'forgot password ?',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color(kDarkGrey.value),
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.italic,
+                            letterSpacing: 1.5,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

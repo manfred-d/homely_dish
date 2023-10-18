@@ -20,8 +20,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
   Widget build(BuildContext context) {
     return Consumer<ZoomNotifier>(builder: (context, zoomNotifier, child) {
       return GestureDetector(
-        onDoubleTap: () {
-          ZoomDrawer.of(context)!.toggle();
+        onTap: () {
+          ZoomDrawer.of(context)!.close();
         },
         child: Scaffold(
           backgroundColor: Color(kLightBlue.value),

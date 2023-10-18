@@ -31,7 +31,7 @@ class _SearchPageState extends State<SearchPage> {
           ],
           child: Padding(
             padding: EdgeInsets.all(12.h),
-            child: DrawerWidget(),
+            child: const DrawerWidget(),
           ),
         ),
       ),

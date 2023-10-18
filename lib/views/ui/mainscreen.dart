@@ -36,7 +36,7 @@ class _MainScreenState extends State<MainScreen> {
         slideWidth: 210,
         menuBackgroundColor: Color(kLightBlue.value),
         openCurve: Curves.fastOutSlowIn,
-        closeCurve: Curves.fastOutSlowIn,
+        closeCurve: Curves.decelerate,
       );
     });
   }
