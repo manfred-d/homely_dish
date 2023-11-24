@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:homely_dish/views/common/app_bar.dart';
-import 'package:homely_dish/views/common/drawer/drawer_widget.dart';
+import 'package:homely_dish/views/ui/profile/profile_screen.dart';
 
 class BookmarkPage extends StatefulWidget {
   const BookmarkPage({super.key});
@@ -20,10 +21,15 @@ class _BookmarkPageState extends State<BookmarkPage> {
           actions: [
             Padding(
               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
-              child: const CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage(
-                  'assets/images/onboading/logo.png',
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const ProfilePage());
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage(
+                    'assets/images/onboading/logo.png',
+                  ),
                 ),
               ),
             ),
@@ -31,7 +37,12 @@ class _BookmarkPageState extends State<BookmarkPage> {
           text: 'Bookmarked',
           child: Padding(
             padding: EdgeInsets.all(12.h),
-            child: const DrawerWidget(),
+            child: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(Icons.arrow_back_ios),
+            ),
           ),
         ),
       ),

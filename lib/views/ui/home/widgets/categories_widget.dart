@@ -17,7 +17,7 @@ class CategoriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width * 0.24,
+      width: width * 0.23,
       height: height * 0.12,
       child: GestureDetector(
         onTap: onTap,
@@ -26,6 +26,7 @@ class CategoriesWidget extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundImage: AssetImage(backgroundImage),
+              backgroundColor: Color(kOrangeAccent.value),
               radius: 30,
             ),
             const SizedBox(

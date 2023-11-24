@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:homely_dish/constants/app_constants.dart';
 import 'package:homely_dish/constants/custom_btn.dart';
 import 'package:homely_dish/constants/reusable_text.dart';
 import 'package:homely_dish/views/common/app_bar.dart';
-import 'package:homely_dish/views/common/drawer/drawer_widget.dart';
+import 'package:homely_dish/views/ui/profile/profile_screen.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -41,18 +42,28 @@ class _CartPageState extends State<CartPage> {
           actions: [
             Padding(
               padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
-              child: const CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage(
-                  'assets/images/onboading/logo.png',
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const ProfilePage());
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage(
+                    'assets/images/onboading/logo.png',
+                  ),
                 ),
               ),
             ),
           ],
-          text: 'Cart',
+          text: 'My Cart',
           child: Padding(
             padding: EdgeInsets.all(12.h),
-            child: const DrawerWidget(),
+            child: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(Icons.arrow_back_ios),
+            ),
           ),
         ),
       ),
@@ -144,6 +155,12 @@ class _CartPageState extends State<CartPage> {
                                         child: TextField(
                                           controller: _quantityController,
                                           keyboardType: TextInputType.number,
+                                          decoration: const InputDecoration(
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide:
+                                                  BorderSide(width: 0.5),
+                                            ),
+                                          ),
                                           inputFormatters: [
                                             FilteringTextInputFormatter.allow(
                                               RegExp('[0-9]'),
@@ -184,6 +201,7 @@ class _CartPageState extends State<CartPage> {
                               icon: Icon(
                                 CupertinoIcons.delete,
                                 color: Color(kOrange.value),
+                                size: 20,
                               ),
                             ),
                           )
@@ -218,21 +236,46 @@ class _CartPageState extends State<CartPage> {
                     horizontal: 12.0,
                     vertical: 5.0,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ReusableText(
-                        color: Color(kDarkGreen.value),
-                        text: 'Total : ',
-                        fontweigth: FontWeight.bold,
-                        fontsize: 20,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ReusableText(
+                            color: Color(kDarkGreen.value),
+                            text: 'Delivery fee : ',
+                            fontweigth: FontWeight.normal,
+                            fontsize: 18,
+                          ),
+                          ReusableText(
+                            color: Color(kOrange.value),
+                            text: 'Ksh: 300',
+                            fontweigth: FontWeight.w500,
+                            fontsize: 18,
+                          ),
+                        ],
                       ),
-                      ReusableText(
-                        color: Color(kOrange.value),
-                        text: 'Ksh: 3000',
-                        fontweigth: FontWeight.w600,
-                        fontsize: 22,
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ReusableText(
+                            color: Color(kDarkGreen.value),
+                            text: 'Total : ',
+                            fontweigth: FontWeight.bold,
+                            fontsize: 20,
+                          ),
+                          ReusableText(
+                            color: Color(kOrange.value),
+                            text: 'Ksh: 3000',
+                            fontweigth: FontWeight.w600,
+                            fontsize: 22,
+                          ),
+                        ],
                       ),
                     ],
                   ),

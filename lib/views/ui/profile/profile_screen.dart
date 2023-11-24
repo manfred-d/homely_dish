@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:homely_dish/constants/app_constants.dart';
 import 'package:homely_dish/constants/reusable_text.dart';
 import 'package:homely_dish/views/common/app_bar.dart';
-import 'package:homely_dish/views/common/drawer/drawer_widget.dart';
+import 'package:homely_dish/views/ui/auth/login.dart';
 import 'package:homely_dish/views/ui/profile/widgets/links_widget.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -20,19 +21,13 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70.0),
         child: CustomAppBar(
-          actions: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
-              child: const CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage(
-                  'assets/images/onboading/logo.png',
-                ),
-              ),
-            ),
-          ],
           text: 'Profile',
-          child: const DrawerWidget(),
+          child: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -124,6 +119,18 @@ class _ProfilePageState extends State<ProfilePage> {
                     tcolor: Color(kDarkGreen.value),
                     icolor: Color(kDarkGreen.value),
                     text: 'History',
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TabsWidget(
+                    onTap: () {
+                      Get.to(() => const LoginPage());
+                    },
+                    icon: Icons.logout_rounded,
+                    tcolor: Color(kDarkGreen.value),
+                    icolor: Color(kDarkGreen.value),
+                    text: 'Logout',
                   ),
                   const SizedBox(
                     height: 15,

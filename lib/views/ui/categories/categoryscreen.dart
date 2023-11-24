@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:homely_dish/constants/app_constants.dart';
+import 'package:homely_dish/constants/reusable_text.dart';
 import 'package:homely_dish/views/common/app_bar.dart';
-import 'package:homely_dish/views/common/drawer/drawer_widget.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -31,7 +33,65 @@ class _CategoryPageState extends State<CategoryPage> {
           text: 'Categories',
           child: Padding(
             padding: EdgeInsets.all(12.h),
-            child: const DrawerWidget(),
+            child: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(Icons.arrow_back_ios),
+            ),
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 20.w,
+            ),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: width,
+                  height: height,
+                  child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        width: width,
+                        height: height * 0.12,
+                        margin: EdgeInsets.symmetric(vertical: 10.h),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Card(
+                          elevation: 5,
+                          color: Color(kOrangeAccent.value),
+                          shadowColor: Color(kDarkGrey.value),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset('assets/images/onboading/logo.png'),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: ReusableText(
+                                  color: Color(kLight.value),
+                                  text: 'Pizza',
+                                  fontweigth: FontWeight.w600,
+                                  fontsize: 20,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

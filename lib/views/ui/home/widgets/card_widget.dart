@@ -23,7 +23,7 @@ class MealCardWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: width,
-        height: height * 0.18,
+        height: height * 0.16,
         padding: const EdgeInsets.symmetric(
           horizontal: 20.0,
           vertical: 15.0,
