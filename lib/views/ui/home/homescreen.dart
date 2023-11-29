@@ -211,13 +211,7 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                // const Column(
-                //   children: [
-                //     MealCardWidget(),
-                //     MealCardWidget(),
-                //     MealCardWidget(),
-                //   ],
-                // ),
+                
               ],
             ),
           ),
