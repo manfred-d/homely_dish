@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
+import 'package:homely_dish/api/api.dart';
 import 'package:homely_dish/constants/app_constants.dart';
 import 'package:homely_dish/constants/custom_btn.dart';
 import 'package:homely_dish/constants/sign_in_btn.dart';
@@ -11,6 +14,7 @@ import 'package:homely_dish/views/common/custom_textfield.dart';
 import 'package:homely_dish/views/ui/auth/register.dart';
 import 'package:homely_dish/views/ui/mainscreen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -28,6 +32,30 @@ class _LoginPageState extends State<LoginPage> {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
+  }
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void _login() async{
+    final data = {
+      'email' :emailController.text,
+      'password' :passwordController.text,
+    };
+    final res = await CallApi().postData(data, 'login');
+    final body = json.decode(res.body);
+    // print(res.statusCode);
+    if (res.statusCode ==200) {
+      SharedPreferences localStorage = await SharedPreferences.getInstance();
+      localStorage.setString('token', body['token']);
+      localStorage.setString('user', json.encode(body['user']));
+      
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MainScreen()));
+    }
+    else{
+      print('Error occured');
+    }
   }
 
   @override
@@ -150,21 +178,25 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 20,
                     ),
+                    // login button
                     CustomElevatedButton(
                       text: 'Login',
                       backGcolor: Color(kOrange2.value),
                       tcolor: Color(kDarkGreen.value),
                       onPressed: () {
-                        Get.to(() => const MainScreen());
+                        _login();
+                        // Get.to(() => const MainScreen());
                       },
                     ),
                     const SizedBox(
                       height: 20,
                     ),
+                    // go to register page
                     Align(
                       alignment: Alignment.centerRight,
                       child: GestureDetector(
                         onTap: () {
+                          
                           Get.to(() => const SignupPage());
                         },
                         child: Text(

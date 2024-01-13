@@ -66,7 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: Color(kDarkGreen.value),
+                                  color: Color(kLight.value),
                                   fontWeight: FontWeight.normal,
                                   letterSpacing: 1.5,
                                 ),
